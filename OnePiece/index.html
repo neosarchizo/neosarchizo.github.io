@@ -19,11 +19,13 @@
 			    var sHeight = 0;
 			    var intervalId = setInterval(function()
 			    	{ 
-			    		if(sHeight != document.body.scrollHeight)
-			    			window.scrollTo(0, sHeight = document.body.scrollHeight);
+			    		if(sHeight != document.body.scrollHeight){
+			    			sHeight = document.body.scrollHeight;
+			    			window.scrollTo(0, document.body.scrollHeight);
+		    			}
 		    			else
 	    					clearInterval(intervalId);
-			    }, 100);
+			    }, 1000);
 			}
 		</script>
 	</body>
