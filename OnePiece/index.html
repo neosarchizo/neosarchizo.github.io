@@ -15,6 +15,15 @@
 			    for(var i=0;i<totalPage;i++){
 			    	document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '">';
 			    }
+
+			    var sHeight = 0;
+			    var intervalId = setInterval(function()
+			    	{ 
+			    		if(sHeight != document.body.scrollHeight)
+			    			window.scrollTo(0, sHeight = document.body.scrollHeight);
+		    			else
+	    					clearInterval(intervalId);
+			    }, 100);
 			}
 		</script>
 	</body>
