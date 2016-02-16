@@ -23,8 +23,10 @@
 			    			sHeight = document.body.scrollHeight;
 			    			window.scrollTo(0, document.body.scrollHeight);
 		    			}
-		    			else
-	    					clearInterval(intervalId);
+		    			else{
+		    				clearInterval(intervalId);
+		    				console.log('"loadImages" complete!');
+		    			}
 			    }, 1000);
 			}
 		</script>
