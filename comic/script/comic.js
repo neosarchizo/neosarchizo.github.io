@@ -3,7 +3,7 @@ var totalPage = location.href.substring((location.href.indexOf('totalPage=')+10)
 var comicInfo;
 
 $.getJSON( "json/comic.json", function( json ) {
-  comicInfo = json;
+	comicInfo = json;
 });
 
 totalPage *= 1;
@@ -40,4 +40,10 @@ function changeVolume(nContentsNo, nVolumeNo){
 
 function go(nVolumeNo){
 	location = 'http://neosarchizo.github.io/comic?totalPage=' + nVolumeNo;
+}
+
+function availableList(){
+	$.each(comicInfo.contents, function( key, val ) {
+		console.log(key + " : " + val);
+	});
 }
