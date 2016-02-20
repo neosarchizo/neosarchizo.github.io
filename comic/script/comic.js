@@ -30,7 +30,12 @@ function loadImages(){
 	}, 1000);
 }
 function changeVolume(nContentsNo, nVolumeNo){
+	if(typeof comicInfo.volumes[nContentsNo] == 'undefined' || typeof comicInfo.volumes[nContentsNo][nVolumeNo] == 'undefined'){
+		console.log("changeVolume : It's not available!");
+		return;
+	}
 	app.changeVolume(nContentsNo,nVolumeNo);
+	go(nVolumeNo);
 }
 
 function go(nVolumeNo){
