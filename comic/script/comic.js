@@ -15,7 +15,11 @@ function loadImages(){
 	for(var i=0;i<totalPage;i++){
 		document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '">';
 	}
+	
+	scrollToEnd();
+}
 
+function scrollToEnd(){
 	var sHeight = 0;
 	var intervalId = setInterval(function()
 	{ 
@@ -29,6 +33,7 @@ function loadImages(){
 		}
 	}, 1000);
 }
+
 function changeVolume(nContentsNo, nVolumeNo){
 	if(typeof comicInfo.volumes[nContentsNo] == 'undefined' || typeof comicInfo.volumes[nContentsNo][nVolumeNo-1] == 'undefined'){
 		console.log("changeVolume : It's not available!");
