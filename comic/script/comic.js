@@ -35,11 +35,11 @@ function changeVolume(nContentsNo, nVolumeNo){
 		return;
 	}
 	app.changeVolume(nContentsNo,nVolumeNo);
-	go(nVolumeNo);
+	go(comicInfo.volumes[nContentsNo][nVolumeNo]);
 }
 
-function go(nVolumeNo){
-	location = 'http://neosarchizo.github.io/comic?totalPage=' + nVolumeNo;
+function go(totalPage){
+	location = 'http://neosarchizo.github.io/comic?totalPage=' + totalPage;
 }
 
 function availableList(){
