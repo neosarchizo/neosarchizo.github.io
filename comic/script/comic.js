@@ -3,7 +3,7 @@ var totalPage = location.href.substring((location.href.indexOf('totalPage=')+10)
 var comicInfo;
 
 $.getJSON( "json/comic.json", function( json ) {
-  comicInfo = data;
+  comicInfo = json;
 });
 
 totalPage *= 1;
