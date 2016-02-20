@@ -32,3 +32,7 @@ function loadImages(){
 function changeVolume(nContentsNo, nVolumeNo){
 	app.changeVolume(nContentsNo,nVolumeNo);
 }
+
+function go(nVolumeNo){
+	location = 'http://neosarchizo.github.io/comic?totalPage=' + nVolumeNo;
+}
