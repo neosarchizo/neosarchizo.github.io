@@ -30,12 +30,12 @@ function loadImages(){
 	}, 1000);
 }
 function changeVolume(nContentsNo, nVolumeNo){
-	if(typeof comicInfo.volumes[nContentsNo] == 'undefined' || typeof comicInfo.volumes[nContentsNo][nVolumeNo] == 'undefined'){
+	if(typeof comicInfo.volumes[nContentsNo] == 'undefined' || typeof comicInfo.volumes[nContentsNo][nVolumeNo-1] == 'undefined'){
 		console.log("changeVolume : It's not available!");
 		return;
 	}
 	app.changeVolume(nContentsNo,nVolumeNo);
-	go(comicInfo.volumes[nContentsNo][nVolumeNo]);
+	go(comicInfo.volumes[nContentsNo][nVolumeNo-1]);
 }
 
 function go(totalPage){
