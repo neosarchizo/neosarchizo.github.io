@@ -13,7 +13,7 @@ function loadImages(){
 		return;
 
 	for(var i=0;i<totalPage;i++){
-		document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '" crossOrigin="anonymous">';
+		document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '">';
 	}
 	
 	scrollToEnd();
