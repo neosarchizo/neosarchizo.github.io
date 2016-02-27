@@ -16,8 +16,8 @@
 		// We are going to extract character name nodes for this sample
 		function xmlLoader(){
 			$.ajax({
-			    url: 'http://examples.oreilly.com/9780596002527/examples/first.xml',
-			    dataType: "xml",
+			    url: 'ncomicpic://image?index=1',
+			    dataType: "text",
 			    type: 'GET',
 			    success: function(res) {
 					var myXML = res.responseText;
