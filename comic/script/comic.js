@@ -16,10 +16,12 @@ function loadImages(){
 		document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '">';
 	}
 	
-	scrollToEnd();
+	scrollToEnd(true);
 }
 
-function scrollToEnd(){
+function scrollToEnd(print = false){
+	console.log('"scrollToEnd" start!');
+
 	var sHeight = 0;
 	var intervalId = setInterval(function()
 	{ 
@@ -29,7 +31,9 @@ function scrollToEnd(){
 		}
 		else{
 			clearInterval(intervalId);
-			console.log('"loadImages" complete!');
+			console.log('"scrollToEnd" complete!');
+			if(print)
+				window.print();
 		}
 	}, 1000);
 }
