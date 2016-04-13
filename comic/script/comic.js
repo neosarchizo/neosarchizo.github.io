@@ -1,3 +1,6 @@
+const LS_CONTENTS_NO = 'LS_CONTENTS_NO'; 
+const LS_VOLUME_NO = 'LS_VOLUME_NO'; 
+
 var totalPage = location.href.substring((location.href.indexOf('totalPage=')+10), location.href.length);
 
 var comicInfo;
@@ -57,6 +60,10 @@ function changeVolume(nContentsNo, nVolumeNo){
 		console.log("changeVolume : It's not available!");
 		return;
 	}
+
+	localStorage.setItem(LS_CONTENTS_NO,nContentsNo);
+	localStorage.setItem(LS_VOLUME_NO,nVolumeNo);
+
 	app.changeVolume(nContentsNo,nVolumeNo);
 	go(comicInfo.volumes[nContentsNo][nVolumeNo-1]);
 }
