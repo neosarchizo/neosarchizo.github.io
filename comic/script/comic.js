@@ -4,6 +4,7 @@ var comicInfo;
 
 $.getJSON( "json/comic.json", function( json ) {
 	comicInfo = json;
+	availableList();
 });
 
 totalPage *= 1;
@@ -12,11 +13,21 @@ function loadImages(){
 	if(isNaN(totalPage) || totalPage < 1)
 		return;
 
+	if (window.matchMedia) {
+        var mediaQueryList = window.matchMedia('print');
+        mediaQueryList.addListener(function(mql) {
+            if (mql.matches) {
+                 console.log('"window.print()" start!');
+            } else {
+                 console.log('"window.print()" complete!');
+            }
+        });
+    }
+
 	for(var i=0;i<totalPage;i++){
 		document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '">';
 	}
 	
-	availableList();
 	scrollToEnd(true);
 }
 
