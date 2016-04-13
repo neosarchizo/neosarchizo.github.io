@@ -17,15 +17,21 @@ function loadImages(){
 		return;
 
 	if (window.matchMedia) {
-        var mediaQueryList = window.matchMedia('print');
-        mediaQueryList.addListener(function(mql) {
-            if (mql.matches) {
-                 console.log('"window.print()" start!');
-            } else {
-                 console.log('"window.print()" complete!');
-            }
-        });
-    }
+		var mediaQueryList = window.matchMedia('print');
+		mediaQueryList.addListener(function(mql) {
+			if (mql.matches) {
+				console.log('"window.print()" start!');
+			} else {
+				console.log('"window.print()" complete!');
+				var contentsNo = localStorage.getItem(LS_CONTENTS_NO);
+				var volumeNo = localStorage.getItem(LS_VOLUME_NO);
+				if(comicInfo.volumes[contentsNo].length > volumeNo){
+					if (confirm("Move to next?")) 
+						changeVolume(contentsNo,volumeNo + 1);
+				}
+			}
+		});
+	}
 
 	for(var i=0;i<totalPage;i++){
 		document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '">';
