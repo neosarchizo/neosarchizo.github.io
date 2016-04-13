@@ -19,7 +19,9 @@ function loadImages(){
 	scrollToEnd(true);
 }
 
-function scrollToEnd(print = false){
+function scrollToEnd(print){
+	print = typeof print !== 'undefined' ? print : false;
+
 	console.log('"scrollToEnd" start!');
 
 	var sHeight = 0;
