@@ -23,8 +23,8 @@ function loadImages(){
 				console.log('"window.print()" start!');
 			} else {
 				console.log('"window.print()" complete!');
-				var contentsNo = localStorage.getItem(LS_CONTENTS_NO);
-				var volumeNo = localStorage.getItem(LS_VOLUME_NO);
+				var contentsNo = localStorage.getItem(LS_CONTENTS_NO) * 1;
+				var volumeNo = localStorage.getItem(LS_VOLUME_NO) * 1;
 				if(comicInfo.volumes[contentsNo].length > volumeNo){
 					if (confirm("Move to next?")) 
 						changeVolume(contentsNo,volumeNo + 1);
