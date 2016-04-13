@@ -16,6 +16,7 @@ function loadImages(){
 		document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '">';
 	}
 	
+	availableList();
 	scrollToEnd(true);
 }
 
