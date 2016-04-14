@@ -83,3 +83,7 @@ function availableList(){
 		console.log(key + " : " + val);
 	});
 }
+
+function print(){
+	window.print();
+}
