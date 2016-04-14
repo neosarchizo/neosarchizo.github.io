@@ -84,6 +84,6 @@ function availableList(){
 	});
 }
 
-function print(){
+function nPrint(){
 	window.print();
 }
