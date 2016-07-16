@@ -1,0 +1,23 @@
+<html>
+<body>
+
+	<video id="player" max-width="100%" controls>
+		<source src="" type="video/mp4">
+			Your browser does not support HTML5 video.
+	</video>
+	<br>
+	<textarea rows="4" cols="100" id="videoUrl">
+		
+	</textarea>
+	<br>
+	<button type="button" onclick="loadVideo();">Load</button>
+	<script type="text/javascript">
+		function loadVideo(){
+			var player = document.querySelector('#player');
+			var videoUrl = document.querySelector('#videoUrl');
+			player.children[0].src = videoUrl.value.trim();
+			player.load();	
+		}
+	</script>
+</body>
+</html>
