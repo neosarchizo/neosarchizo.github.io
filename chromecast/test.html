@@ -5,13 +5,19 @@
   <title>google-castable-video Demo</title>
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="../google-castable-video.html">
+  <style type="text/css">
+    video {
+      width: 100%    !important;
+      height: auto   !important;
+    }
+  </style>
 
 </head>
 <body>
 
   <p>An example of using <code>&lt;google-castable-video></code>:</p>
 
-  <video is="google-castable-video" width="500" controls>
+  <video is="google-castable-video" controls>
     <source src="http://bigfile.mail.naver.com/bigfileupload/download.mp4?fid=UwFZMBFTp6/wHreP16CoHq29KxE9HqUmKxMmFquXKAuqKoE/HqudFquqFxv9axvjFxMdFAUwFzM9pxtdazE9axK9FxC0KAK9pA+SMqvXMog=" type="video/mp4">
   </video>
 
