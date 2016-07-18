@@ -20,24 +20,5 @@
   <video is="google-castable-video" controls>
     <source src="http://bigfile.mail.naver.com/bigfileupload/download.mp4?fid=UwFZMBFTp6/wHreP16CoHq29KxE9HqUmKxMmFquXKAuqKoE/HqudFquqFxv9axvjFxMdFAUwFzM9pxtdazE9axK9FxC0KAK9pA+SMqvXMog=" type="video/mp4">
   </video>
-
-  <script>
-    var progressSlider = document.querySelector("#progress");
-
-    progressSlider.addEventListener("mouseup", function(){
-      var duration = vid.duration;
-      var newPosition = ( duration / 100 ) * this.value;
-      vid.currentTime = newPosition;
-    });
-
-    //IMPORTANT use this to get the currentTime even when casting
-    vid.addEventListener("google-castable-video-timeupdate",function(e){
-      var duration = vid.duration;
-      var currentTime = e.detail.currentTime;
-      progressSlider.value = currentTime * ( 100 / duration );
-    });
-
-  </script>
-
 </body>
 </html>
