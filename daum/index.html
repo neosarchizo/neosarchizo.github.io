@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+	<title>Movie Pla</title>
+	<style type="text/css">
+		video {
+			width: 100%    !important;
+			height: auto   !important;
+		}
+	</style>
+
+</head>
+<body>
+	<video id="player" is="google-castable-video" controls oncontextmenu="return false;" width="100%" height="100%"></video>
+
+	<script type="text/javascript">
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4 && xhttp.status == 200) {
+				var xml = xhttp.responseXML;
+				var data = xml.getElementsByTagName("url")[0].childNodes[0]
+
+				var player = document.querySelector('#player');
+				var source = document.createElement('source');
+				source.setAttribute('src', data.substringData(0,data.length));
+				player.appendChild(source);
+				player.load();
+			}
+		};
+		xhttp.open("GET", "https://crossorigin.me/http://videofarm.daum.net/controller/api/open/v1_2/MovieLocation.apixml?vid=v8884hkhGXqhkNWhdLGNqkG&profile=HIGH&tid=null&play_loc=undefined", true);
+		xhttp.send();
+
+	</script>
+	</body>
+</html>
