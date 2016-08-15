@@ -1,40 +1,23 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Video.js | HTML5 Video Player</title>
-
+  <title>Pooq</title>
   <link href="video-js.css" rel="stylesheet" type="text/css">
   <script src="video.js"></script>
-  <script>
+  <script type="text/javascript">
     videojs.options.flash.swf = "video-js.swf";
-  </script>
-</head>
-<body>
-
-  <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" 
-  poster="http://video-js.zencoder.com/oceans-clip.png"
-  data-setup='{"techOrder": ["flash"]}'>
-  <source src="http://www.flashls.org/playlists/test_001/stream.m3u8" type='video/mp4' />
-</video>
-
-  <input id="userInput" value="http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8" size="80"> <button onclick="userSubmit()">Load and Play</button><br>
-  <p>
-
-    <script type="text/javascript">
-
-      function userSubmit() {
-       loadStream(document.getElementById('userInput').value);
-     }
-     function loadStream(url) {
-      var $vid_obj = _V_("example_video_1");
+    function loadStream(url){
+      var $vid_obj = _V_("video-player");
       $vid_obj.src(url);
       $vid_obj.on('loadstart',function(){
         $vid_obj.play();
       });
     }
-
   </script>
-
+</head>
+<body>
+  <video id="video-player" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" 
+  poster="http://video-js.zencoder.com/oceans-clip.png"
+  data-setup='{"techOrder": ["flash"]}'></video>
 </body>
 </html>
