@@ -2,10 +2,11 @@
 <html>
 <head>
   <title>Pooq</title>
-  <link href="video-js.css" rel="stylesheet" type="text/css">
-  <script src="video.js"></script>
+  <link href="css/video-js.css" rel="stylesheet" type="text/css">
+  <script src="js/video.js"></script>
+  <script src="js/jquery-3.1.0.min.js"></script>
   <script type="text/javascript">
-    videojs.options.flash.swf = "video-js.swf";
+    videojs.options.flash.swf = "swf/video-js.swf";
     function loadStream(url){
       var $vid_obj = _V_("video-player");
       $vid_obj.src(url);
@@ -17,7 +18,6 @@
 </head>
 <body>
   <video id="video-player" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" 
-  poster="http://video-js.zencoder.com/oceans-clip.png"
   data-setup='{"techOrder": ["flash"]}'></video>
 </body>
 </html>
