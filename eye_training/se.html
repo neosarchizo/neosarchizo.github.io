@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Eye Training</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="shortcut icon" href="img/eye.ico">
+		<script type="text/javascript">
+			var ball_r,margin_x, margin_y, space_h, space_w;
+			var step_count=0;
+			var interval_procedure;
+			var level;
+			var finished=0;
+			
+			var level = location.href.substring((location.href.indexOf('level=')+6), location.href.length);
+			
+			document.title = document.title + " LV " + level;
+			
+			level *= 1;
+			
+			if(isNaN(level))
+			    level=5;
+			
+		</script>
+	</head>
+	<body>
+
+		<canvas id="myCanvas" width=100% height=100% >Your browser does not support the HTML5 canvas tag.</canvas>
+
+		<script type="text/javascript">
+
+			var canvas = document.getElementById('myCanvas'),
+					context = canvas.getContext('2d');
+
+			// resize the canvas to fill browser window dynamically
+			window.addEventListener('resize', resizeCanvas, false);
+
+			function resizeCanvas() {
+					canvas.width = window.innerWidth;
+					canvas.height = window.innerHeight;
+					
+					ball_r=window.innerHeight * 0.037;
+					margin_x=window.innerWidth * 0.02;
+					margin_y=window.innerHeight * 0.081;
+					space_h=window.innerHeight * 0.078;
+					space_w=window.innerWidth * 0.1088;
+					
+					/**
+					 * Your drawings need to be inside this function otherwise they will be reset when 
+					 * you resize the browser window and the canvas goes will be cleared.
+					 */
+					draw(); 
+			}
+			resizeCanvas();
+
+			function draw() {
+				
+				if(step_count<154){
+					//step 1
+					
+					for (var i=0;i<6;i++)
+					{ 
+						//left
+						drawBackgroundBall(context,margin_x+ball_r, margin_y+ball_r+i*(2*ball_r+space_h) ,ball_r);
+						//right
+						drawBackgroundBall(context,window.innerWidth-(margin_x+ball_r), margin_y+ball_r+i*(2*ball_r+space_h) ,ball_r);
+					}
+					
+					
+					if(step_count%22<11){
+						drawGreenBall(context,margin_x+ball_r+((step_count % 22)%2) * (window.innerWidth-2*(margin_x+ball_r)), margin_y+ball_r+parseInt((step_count%22)/2)*(2*ball_r+space_h),ball_r);
+					}else{
+						drawGreenBall(context,margin_x+ball_r+((step_count % 22)%2) * (window.innerWidth-2*(margin_x+ball_r)), margin_y+ball_r+parseInt((22-(step_count%22))/2)*(2*ball_r+space_h),ball_r);
+					}
+					
+				}else if(step_count<322){
+					//step 2
+					
+					if(step_count ==154){
+						clear(context);
+					}
+					
+					//top
+					for (var i=0;i<7;i++)
+					{ 
+						drawBackgroundBall(context,margin_x+ball_r+i*(2*ball_r+space_w), margin_y+ball_r,ball_r);
+					}
+					
+					//bottom
+					for (var i=0;i<6;i++)
+					{ 
+						drawBackgroundBall(context,space_w+ball_r+i*(2*ball_r+space_w), window.innerHeight-(margin_y+ball_r),ball_r);
+					}
+					
+					//green ball
+					//24
+					var sub_count = step_count-154;
+					//0-23
+					
+					if(sub_count%2==0){
+						
+						if(sub_count%24<12){
+							drawGreenBall(context,margin_x+ball_r+parseInt((sub_count%24)/2)*(2*ball_r+space_w), margin_y+ball_r,ball_r);
+						}else{
+							drawGreenBall(context,margin_x+ball_r+parseInt((24-(sub_count%24))/2)*(2*ball_r+space_w), margin_y+ball_r,ball_r);
+						}
+						
+					}else{
+						
+						if(sub_count%24<12){
+							drawGreenBall(context,space_w+ball_r+parseInt((sub_count%24)/2)*(2*ball_r+space_w), window.innerHeight-(margin_y+ball_r),ball_r);
+						}else{
+							drawGreenBall(context,space_w+ball_r+parseInt((24-(sub_count%24))/2)*(2*ball_r+space_w), window.innerHeight-(margin_y+ball_r),ball_r);
+						}
+					}	
+					
+				}else if(step_count<350){
+					if(step_count ==322){
+						clear(context);
+					}
+					//left top 
+					drawBackgroundBall(context,margin_x+ball_r, margin_y+ball_r,ball_r);
+					
+					//right top
+					drawBackgroundBall(context,window.innerWidth-(margin_x+ball_r), margin_y+ball_r,ball_r);
+					
+					//left bottom
+					drawBackgroundBall(context,margin_x+ball_r, window.innerHeight-(margin_y+ball_r),ball_r);
+					
+					//right bottom
+					drawBackgroundBall(context,window.innerWidth-(margin_x+ball_r), window.innerHeight-(margin_y+ball_r),ball_r);
+					
+					//4
+					var sub_count = step_count-322;
+					
+					
+					switch(sub_count % 4){
+						case 0:
+							drawGreenBall(context,margin_x+ball_r, margin_y+ball_r,ball_r);
+							break;
+						case 1:
+							drawGreenBall(context,margin_x+ball_r, window.innerHeight-(margin_y+ball_r),ball_r);
+							break;
+						case 2:
+							drawGreenBall(context,window.innerWidth-(margin_x+ball_r), margin_y+ball_r,ball_r);
+							break;
+						case 3:
+							drawGreenBall(context,window.innerWidth-(margin_x+ball_r), window.innerHeight-(margin_y+ball_r),ball_r);
+							break;
+					}
+					
+					
+				}else{
+					//finish
+					if(finished==0){
+						clear(context);
+						clearInterval(interval_procedure);
+						document.body.style.cursor = 'default';
+						alert("눈을 감고 안구를 좌우로 움직이며 \n잠시 눈의 피로를 풀어줍니다.");
+						finished=1;
+					}
+					
+				}
+			}
+			
+			function clear(ctx){
+				
+					ctx.save();
+
+					// Use the identity matrix while clearing the canvas
+					ctx.setTransform(1, 0, 0, 1, 0, 0);
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+					// Restore the transform
+					ctx.restore();
+			}
+			
+			function drawBackgroundBall(ctx,x,y,r){
+
+				ctx.beginPath();
+				//arc(x,y,r,start,stop)
+				ctx.arc(x,y,r,0,2*Math.PI);
+				
+				ctx.fillStyle = "rgb(248,222,102)";
+				ctx.fill();
+				
+				//ctx.beginPath();
+				//ctx.arc(x,y,r*0.38,0,2*Math.PI);
+				//ctx.fillStyle = "rgb(241,243,218)";
+				//ctx.fill();
+			}
+			
+			function drawGreenBall(ctx,x,y,r){
+				ctx.beginPath();
+				//arc(x,y,r,start,stop)
+				ctx.arc(x,y,r,0,2*Math.PI);
+				
+				// Create gradient
+					//var grd=ctx.createLinearGradient(0,y-ball_r,0,y+ball_r);
+					//grd.addColorStop(0,"rgb(193,201,0)");
+					//grd.addColorStop(0.5,"rgb(102,178,0)");
+					//grd.addColorStop(1,"rgb(5,154,0)");
+				
+				//ctx.fillStyle = grd;
+				ctx.fillStyle = "rgb(30,109,4)";
+				ctx.fill();
+				
+				//ctx.beginPath();
+				//--arc(x,y,r,start,stop)
+				//ctx.arc(x,y,r*0.76,0,2*Math.PI);
+				
+				//grd=ctx.createLinearGradient(0,y-ball_r*0.76,0,y+ball_r*0.76);
+				//grd.addColorStop(0,"rgb(5,154,0)");
+				//grd.addColorStop(0.5,"rgb(102,178,0)");
+				//grd.addColorStop(1,"rgb(193,201,0)");
+				
+				//ctx.fillStyle = grd;
+				//ctx.fill();
+				
+				//ctx.beginPath();
+				//ctx.arc(x,y,r*0.38,0,2*Math.PI);
+				//ctx.fillStyle = "rgb(241,243,218)";
+				//ctx.fill();
+			}
+			
+			function countStep(){
+				++step_count;
+				draw();
+			}
+			
+		//step_count
+		//1000 = 1 sec
+		document.body.style.cursor = 'none';
+		
+		
+		alert("Ready!!");
+		
+		
+		/*
+			750
+			500
+			416
+			333
+			250
+		*/
+		var tick_time;
+		
+		switch(level){
+			case 1:
+				tick_time=750;
+				break;
+			case 2:
+				tick_time=500;
+				break;
+			case 3:
+				tick_time=416;
+				break;
+			case 4:
+				tick_time=333;
+				break;
+			case 5:
+				tick_time=170;
+				break;
+			default:
+				tick_time=level;
+				break;
+		}
+		
+		interval_procedure=setInterval("countStep()", tick_time);
+		
+
+		</script> 
+		
+	</body>
+	<script type="text/javascript">
+		document.body.addEventListener("click", function() {
+			var
+				  el = document.documentElement
+				, rfs =el.webkitRequestFullScreen;
+			rfs.call(el);
+		});
+		
+	</script>
+	
+</html>

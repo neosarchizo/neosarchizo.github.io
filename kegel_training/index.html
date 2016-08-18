@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kegel Training</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<!--<link rel="shortcut icon" href="img/eye.ico">-->
+        <script src="js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript">
+			var tickId;    
+		    var remainCount;
+		    var tick;
+			var isPlaying = false;
+			
+			$(function(){
+			    remainCount = $('#remain-count');
+		        tick = $('#tick');
+			    
+			    $('body').keydown(function() {
+			        if(!isPlaying){
+    			        if(remainCount.text() != 0)
+                            if(event.keyCode == 32){
+                                isPlaying = true;
+                                remainCount.hide();
+                                tick.css( "width", '200pt');
+                                tick.text('3.00');        
+                                tickId = setInterval(updateTick,10);            
+                            }       
+			        }
+			        
+                });
+		    });
+		    
+		    function updateTick(){
+		    	var value = tick.text()-0.01;
+		        tick.text(value.toFixed(2));
+		        
+		        if(tick.text() == 0){
+		            tick.css( "width", '0pt');
+		            remainCount.show();
+		        	clearInterval(tickId);
+		        	tick.empty();
+		            remainCount.text(remainCount.text()-1);
+		            isPlaying = false;
+		            if(remainCount.text() == 0)
+		                alert("Finish!");
+		        }
+		    }
+
+		</script>
+	</head>
+	<body>
+	    <div class='container'>
+	        <div class='centered-container'> 
+	            <div id='remain-count'>50</div>
+        	    <div id='tick'></div>        
+	        </div>
+	    </div>
+	</body>
+</html>
+
