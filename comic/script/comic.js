@@ -1,6 +1,44 @@
 const LS_CONTENTS_NO = 'LS_CONTENTS_NO'; 
 const LS_VOLUME_NO = 'LS_VOLUME_NO'; 
 
+upperOriginalProductId
+
+function Comic(title, productId, origianlProductId){
+	this.title = title;
+	this.productId = productId;
+	this.origianlProductId = origianlProductId;
+	this.volumes = [];
+}
+
+Comic.prototype.getTitle = fucntion(){
+	return this.title;
+}
+
+Comic.prototype.getProductId = fucntion(){
+	return this.productId;	
+}
+
+Comic.prototype.getOriginalProductId = fucntion(){
+	return this.origianlProductId;	
+}
+
+Comic.prototype.getVolumes = fucntion(){
+	return this.volumes;	
+}
+
+function Volume(no, pageCount){
+	this.no = no;
+	this.pageCount = pageCount;	
+}
+
+Volume.prototype.getNo = function(){
+	return this.no;
+};
+
+Volume.prototype.getPageCount = function(){
+	return this.pageCount;
+};
+
 var totalPage = location.href.substring((location.href.indexOf('totalPage=')+10), location.href.length);
 
 var comicInfo;
