@@ -8,19 +8,19 @@ function Comic(title, productId, origianlProductId){
 	this.volumes = [];
 };
 
-Comic.prototype.getTitle = fucntion(){
+Comic.prototype.getTitle = function(){
 	return this.title;
 };
 
-Comic.prototype.getProductId = fucntion(){
+Comic.prototype.getProductId = function(){
 	return this.productId;	
 };
 
-Comic.prototype.getOriginalProductId = fucntion(){
+Comic.prototype.getOriginalProductId = function(){
 	return this.origianlProductId;	
 };
 
-Comic.prototype.getVolumes = fucntion(){
+Comic.prototype.getVolumes = function(){
 	return this.volumes;	
 };
 
