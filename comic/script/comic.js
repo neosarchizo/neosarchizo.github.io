@@ -39,6 +39,8 @@ Volume.prototype.getPageCount = function(){
 
 var totalPage = location.href.substring((location.href.indexOf('totalPage=')+10), location.href.length);
 
+var comics = [];
+
 var comicInfo;
 
 $.getJSON( "json/comic.json", function( json ) {
