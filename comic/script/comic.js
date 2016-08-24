@@ -54,7 +54,19 @@ $.getJSON( "json/comic.json", function( json ) {
 totalPage *= 1;
 
 function loadVolumes(comic, page){
-	
+
+	$.getJSON( "http://cors.io/", {"u": "http://nstore.naver.com/comic/volumeList.nhn?productNo=" + comic.getProductId() + "&page=" + page}, function( json ) {
+		var resultData = json.resultData;
+	    
+	    if(resultData.length == 0)
+	    	return;
+
+	    for (var i = 0, len = resultData.length; i < len; i++) {
+			comic.volumes.push(new Volume(resultData[i].volumeNo, resultData[i].pageCount));
+		}
+
+		loadVolumes(comic, ++page);
+	});
 }
 
 function loadImages(){
