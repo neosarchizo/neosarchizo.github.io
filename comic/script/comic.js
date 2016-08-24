@@ -41,14 +41,21 @@ var totalPage = location.href.substring((location.href.indexOf('totalPage=')+10)
 
 var comics = [];
 
-var comicInfo;
-
 $.getJSON( "json/comic.json", function( json ) {
-	comicInfo = json;
+	var comics_ = json.comics;
+	for (var i = 0, len = comics_.length; i < len; i++) {
+		var comic = new Comic(comics_[i].title, comics_[i].productId, comics_[i].origianlProductId);
+		loadVolumes(comic, 1);
+		comics.push(comic);
+	}
 	availableList();
 });
 
 totalPage *= 1;
+
+function loadVolumes(comic, page){
+	
+}
 
 function loadImages(){
 	if(isNaN(totalPage) || totalPage < 1)
@@ -117,9 +124,9 @@ function go(totalPage){
 }
 
 function availableList(){
-	$.each(comicInfo.contents, function( key, val ) {
-		console.log(key + " : " + val);
-	});
+	for (var i = 0, len = comics.length; i < len; i++) {
+		console.log(comics[i].getTitle() + " : " + comics[i].getOriginalProductId());
+	}
 }
 
 function nPrint(){
