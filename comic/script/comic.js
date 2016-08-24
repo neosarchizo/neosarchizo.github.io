@@ -124,6 +124,8 @@ function scrollToEnd(print){
 		else{
 			clearInterval(intervalId);
 			console.log('"scrollToEnd" complete!');
+			var img = document.querySelector('img');
+			console.log("image size : " + img.clientWidth + " x " + img.clientHeight);
 			if(print)
 				window.print();
 		}
