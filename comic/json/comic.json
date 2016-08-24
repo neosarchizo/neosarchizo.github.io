@@ -1,24 +1,24 @@
 {
 	"comics" :
 	[
-		{"title" : "ONE PIECE", "origianlProductId" : 49664, "productId" : 63726},
-		{"title" : "송곳", "origianlProductId" : 194968, "productId" : 1853201},
-		{"title" : "외모지상주의", "origianlProductId" : 227497, "productId" : 2184735},
-		{"title" : "드래곤볼", "origianlProductId" : 50173, "productId" : 63828},
-		{"title" : "강철의 연금술사", "origianlProductId" : 205817, "productId" : 1948703},
-		{"title" : "무한의 주인", "origianlProductId" : 125319, "productId" : 1134670},
-		{"title" : "바람의 검심", "origianlProductId" : 49186, "productId" : 61420},
-		{"title" : "바람의 검심 -특필판-", "origianlProductId" : 207771, "productId" : 1970245},
-		{"title" : "고스트 바둑왕", "origianlProductId" : 114437, "productId" : 657489},
-		{"title" : "사이보그 G짱", "origianlProductId" : 50753, "productId" : 68744},
-		{"title" : "데스노트", "origianlProductId" : 49179, "productId" : 61414},
-		{"title" : "바쿠만", "origianlProductId" : 49666, "productId" : 63728},
-		{"title" : "기생수", "origianlProductId" : 67543, "productId" : 74040},
-		{"title" : "히스토리에", "origianlProductId" : 161549, "productId" : 1567832},
-		{"title" : "이니셜 D", "origianlProductId" : 72361, "productId" : 73400},
-		{"title" : "기동경찰 패트레이버", "origianlProductId" : 200986, "productId" : 1900405},
-		{"title" : "팔용신전설 클래식", "origianlProductId" : 201412, "productId" : 1904575},
-		{"title" : "천랑열전", "origianlProductId" : 201523, "productId" : 1905496},
-		{"title" : "이누야시키", "origianlProductId" : 199289, "productId" : 1886807}
+		{"title" : "ONE PIECE", "opid" : 49664, "pid" : 63726},
+		{"title" : "송곳", "opid" : 194968, "pid" : 1853201},
+		{"title" : "외모지상주의", "opid" : 227497, "pid" : 2184735},
+		{"title" : "드래곤볼", "opid" : 50173, "pid" : 63828},
+		{"title" : "강철의 연금술사", "opid" : 205817, "pid" : 1948703},
+		{"title" : "무한의 주인", "opid" : 125319, "pid" : 1134670},
+		{"title" : "바람의 검심", "opid" : 49186, "pid" : 61420},
+		{"title" : "바람의 검심 -특필판-", "opid" : 207771, "pid" : 1970245},
+		{"title" : "고스트 바둑왕", "opid" : 114437, "pid" : 657489},
+		{"title" : "사이보그 G짱", "opid" : 50753, "pid" : 68744},
+		{"title" : "데스노트", "opid" : 49179, "pid" : 61414},
+		{"title" : "바쿠만", "opid" : 49666, "pid" : 63728},
+		{"title" : "기생수", "opid" : 67543, "pid" : 74040},
+		{"title" : "히스토리에", "opid" : 161549, "pid" : 1567832},
+		{"title" : "이니셜 D", "opid" : 72361, "pid" : 73400},
+		{"title" : "기동경찰 패트레이버", "opid" : 200986, "pid" : 1900405},
+		{"title" : "팔용신전설 클래식", "opid" : 201412, "pid" : 1904575},
+		{"title" : "천랑열전", "opid" : 201523, "pid" : 1905496},
+		{"title" : "이누야시키", "opid" : 199289, "pid" : 1886807}
 	] 
 }

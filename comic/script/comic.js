@@ -1,4 +1,4 @@
-const LS_CONTENTS_NO = 'LS_CONTENTS_NO'; 
+const LS_OPID = 'LS_OPID'; 
 const LS_VOLUME_NO = 'LS_VOLUME_NO'; 
 
 function Comic(title, productId, origianlProductId){
@@ -44,7 +44,7 @@ var comics = [];
 $.getJSON( "json/comic.json", function( json ) {
 	var comics_ = json.comics;
 	for (var i = 0, len = comics_.length; i < len; i++) {
-		var comic = new Comic(comics_[i].title, comics_[i].productId, comics_[i].origianlProductId);
+		var comic = new Comic(comics_[i].title, comics_[i].pid, comics_[i].opid);
 		loadVolumes(comic, 1);
 		comics.push(comic);
 	}
@@ -52,6 +52,15 @@ $.getJSON( "json/comic.json", function( json ) {
 });
 
 totalPage *= 1;
+
+function getComic(origianlProductId){
+	for (var i = 0, len = comics.length; i < len; i++) {
+		if(comics[i].getOriginalProductId() == origianlProductId)
+			return comics[i];
+	}
+
+	return null;
+}
 
 function loadVolumes(comic, page){
 
@@ -80,11 +89,14 @@ function loadImages(){
 				console.log('"window.print()" start!');
 			} else {
 				console.log('"window.print()" complete!');
-				var contentsNo = localStorage.getItem(LS_CONTENTS_NO) * 1;
+				var opid = localStorage.getItem(LS_OPID) * 1;
 				var volumeNo = localStorage.getItem(LS_VOLUME_NO) * 1;
-				if(comicInfo.volumes[contentsNo].length > volumeNo){
+
+				var comic = getComic(opid);
+
+				if(comic.volumes.length > volumeNo){
 					if (confirm("Move to next?")) 
-						changeVolume(contentsNo,volumeNo + 1);
+						changeVolume(opid,volumeNo);
 				}
 			}
 		});
@@ -118,17 +130,22 @@ function scrollToEnd(print){
 	}, 1000);
 }
 
-function changeVolume(nContentsNo, nVolumeNo){
-	if(typeof comicInfo.volumes[nContentsNo] == 'undefined' || typeof comicInfo.volumes[nContentsNo][nVolumeNo-1] == 'undefined'){
+function changeVolume(origianlProductId, volumeNo){
+
+	var comic = getComic(origianlProductId);
+
+	if(comic == null || volumeNo < 0 || comic.volumes.length < volumeNo){
 		console.log("changeVolume : It's not available!");
 		return;
 	}
 
-	localStorage.setItem(LS_CONTENTS_NO,nContentsNo);
-	localStorage.setItem(LS_VOLUME_NO,nVolumeNo);
+	var volume = comic.volumes[volumeNo];
 
-	app.changeVolume(nContentsNo,nVolumeNo);
-	go(comicInfo.volumes[nContentsNo][nVolumeNo-1]);
+	localStorage.setItem(LS_OPID,origianlProductId);
+	localStorage.setItem(LS_VOLUME_NO,volumeNo);
+
+	app.changeVolume(origianlProductId,volume.getNo());
+	go(volume.getPageCount());
 }
 
 function go(totalPage){
