@@ -1,6 +1,3 @@
-const LS_OPID = 'LS_OPID'; 
-const LS_VOLUME_NO = 'LS_VOLUME_NO'; 
-
 function Comic(title, productId, origianlProductId){
 	this.title = title;
 	this.productId = productId;
