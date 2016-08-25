@@ -37,7 +37,22 @@ Volume.prototype.getPageCount = function(){
 	return this.pageCount;
 };
 
-var totalPage = location.href.substring((location.href.indexOf('totalPage=')+10), location.href.length);
+var totalPage=0, opid=0, vno=0;
+
+var query = location.href.split('?');
+if(query.length > 1){
+	query = query[1].split('&');
+	for (var i = 0, len = query.length; i < len; i++) {
+		var param = query[i].split('=');
+		if(param[0] == 'totalPage'){
+			totalPage = param[1] * 1;
+		}else if(param[0] == 'opid'){
+			opid = param[1] * 1;
+		}else if(param[0] == 'vno'){
+			vno = param[1] * 1;
+		}
+	}
+}
 
 var comics = [];
 
@@ -50,8 +65,6 @@ $.getJSON( "json/comic.json", function( json ) {
 	}
 	availableList();
 });
-
-totalPage *= 1;
 
 function getComic(origianlProductId){
 	for (var i = 0, len = comics.length; i < len; i++) {
@@ -79,7 +92,7 @@ function loadVolumes(comic, page){
 }
 
 function loadImages(){
-	if(isNaN(totalPage) || totalPage < 1)
+	if(totalPage == 0)
 		return;
 
 	if (window.matchMedia) {
@@ -89,14 +102,12 @@ function loadImages(){
 				console.log('"window.print()" start!');
 			} else {
 				console.log('"window.print()" complete!');
-				var opid = localStorage.getItem(LS_OPID) * 1;
-				var volumeNo = localStorage.getItem(LS_VOLUME_NO) * 1;
 
 				var comic = getComic(opid);
 
-				if(comic.volumes.length > volumeNo){
+				if(comic.volumes.length > vno){
 					if (confirm("Move to next?")) 
-						changeVolume(opid,volumeNo);
+						changeVolume(opid,vno);
 				}
 			}
 		});
@@ -141,17 +152,14 @@ function changeVolume(origianlProductId, volumeNo){
 		return;
 	}
 
-	var volume = comic.volumes[volumeNo];
-
-	localStorage.setItem(LS_OPID,origianlProductId);
-	localStorage.setItem(LS_VOLUME_NO,volumeNo);
+	var volume = comic.volumes[volumeNo-1];
 
 	app.changeVolume(origianlProductId,volume.getNo());
-	go(volume.getPageCount());
+	go(volume.getPageCount(), origianlProductId, volumeNo);
 }
 
-function go(totalPage){
-	location = 'http://neosarchizo.github.io/comic?totalPage=' + totalPage;
+function go(totalPage, origianlProductId, volumeNo){
+	location = 'http://neosarchizo.github.io/comic?totalPage=' + totalPage + '&opid=' + origianlProductId + '&vno=' + volumeNo;
 }
 
 function availableList(){
