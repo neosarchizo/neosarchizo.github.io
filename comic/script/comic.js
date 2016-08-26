@@ -91,7 +91,7 @@ function getComic(origianlProductId){
 
 function loadVolumes(comic, page){
 
-	$.getJSON( "http://cors.io/", {"u": "http://nstore.naver.com/comic/volumeList.nhn?productNo=" + comic.getProductId() + "&page=" + page}, function( json ) {
+	$.getJSON( "http://neosarchizo.cafe24.com/comic/json/", {"productNo": comic.getProductId(), "page" : page}, function( json ) {
 		var resultData = json.resultData;
 	    
 	    if(resultData.length == 0)
