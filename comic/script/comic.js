@@ -63,6 +63,23 @@ $.getJSON( "json/comic.json", function( json ) {
 	availableList();
 });
 
+function downloadImage(url){
+	window.URL = window.URL || window.webkitURL;
+
+	var xhr = new XMLHttpRequest(),
+	      a = document.createElement('a'), file;
+
+	xhr.open('GET', url, true);
+	xhr.responseType = 'blob';
+	xhr.onload = function () {
+	    file = new Blob([xhr.response], { type : 'application/octet-stream' });
+	    a.href = window.URL.createObjectURL(file);
+	    a.download = 'test.jpg';
+	    a.click();
+	};
+	xhr.send();
+}
+
 function getComic(origianlProductId){
 	for (var i = 0, len = comics.length; i < len; i++) {
 		if(comics[i].getOriginalProductId() == origianlProductId)
