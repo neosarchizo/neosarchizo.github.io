@@ -131,30 +131,40 @@ function loadImages(){
 		document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '">';
 	}
 	
-	scrollToEnd(true);
+	waitAllImgsLoaded();
 }
 
-function scrollToEnd(print){
+function waitAllImgsLoaded(print){
 	print = typeof print !== 'undefined' ? print : false;
 
-	console.log('"scrollToEnd" start!');
+	console.log('"waitAllImgsLoaded" start!');
 
-	var sHeight = 0;
 	var intervalId = setInterval(function()
 	{ 
-		if(sHeight != document.body.scrollHeight){
-			sHeight = document.body.scrollHeight;
-			window.scrollTo(0, document.body.scrollHeight);
+		var allImgsLoaded = true;
+		var imgs = document.querySelectorAll('img');
+
+		for(var i=0, len=imgs.length ; i < len ; i ++){
+			if(imgs[i].naturalWidth == 0){
+				allImgsLoaded = false;
+				break;
+			}
 		}
-		else{
+
+		if(allImgsLoaded){
 			clearInterval(intervalId);
-			console.log('"scrollToEnd" complete!');
+			window.scrollTo(0, document.body.scrollHeight);
+			console.log('"waitAllImgsLoaded" complete!');
 			var img = document.querySelector('img');
-			console.log("image size : " + img.clientWidth + " x " + img.clientHeight);
+			console.log("image size : " + img.naturalWidth + " x " + img.naturalHeight);
 			if(print)
 				window.print();
 		}
 	}, 1000);
+}
+
+function scrollToEnd(){
+	window.scrollTo(0, document.body.scrollHeight);
 }
 
 function changeVolume(origianlProductId, volumeNo){
