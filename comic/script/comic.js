@@ -157,8 +157,9 @@ function waitAllImgsLoaded(print){
 			console.log('"waitAllImgsLoaded" complete!');
 			var img = document.querySelector('img');
 			console.log("image size : " + img.naturalWidth + " x " + img.naturalHeight);
-			if(print)
-				window.print();
+			if(print){
+				setTimeout(function(){ window.print(); }, 100);
+			}
 		}
 	}, 1000);
 }
