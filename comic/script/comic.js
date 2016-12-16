@@ -121,7 +121,7 @@ function loadImages(){
 
 				if(comic.volumes.length > vno){
 					if (confirm("Move to next?")) 
-						changeVolume(opid,vno);
+						changeVolume(opid,++vno);
 				}
 			}
 		});
