@@ -164,7 +164,7 @@ function waitAllImgsLoaded(print){
 				setTimeout(function(){ window.print(); }, 100);
 			}
 		}else{
-			console.log("Images Loading : " + Math.floor((notLoaded/imgs.length)*100) + "%");
+			console.log("Images Loading : " + Math.floor(((imgs.length-notLoaded)/imgs.length)*100) + "%");
 		}
 	}, 1000);
 }
