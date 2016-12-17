@@ -141,17 +141,20 @@ function waitAllImgsLoaded(print){
 
 	var intervalId = setInterval(function()
 	{ 
-		var allImgsLoaded = true;
 		var imgs = document.querySelectorAll('img');
 
+		var notLoaded = 0;
+
 		for(var i=0, len=imgs.length ; i < len ; i ++){
-			if(imgs[i].naturalWidth == 0){
-				allImgsLoaded = false;
-				break;
+			if(imgs[i].naturalWidth == 0 || imgs[i].naturalWidth > imgs[i].naturalHeight){
+				++notLoaded;
+			}else if(i > 0){
+				if(imgs[i].naturalHeight < imgs[i-1].naturalHeight)
+					++notLoaded;
 			}
 		}
 
-		if(allImgsLoaded){
+		if(notLoaded == 0){
 			clearInterval(intervalId);
 			window.scrollTo(0, document.body.scrollHeight);
 			console.log('"waitAllImgsLoaded" complete!');
@@ -160,6 +163,8 @@ function waitAllImgsLoaded(print){
 			if(print){
 				setTimeout(function(){ window.print(); }, 100);
 			}
+		}else{
+			console.log("Images Loading : " + Math.floor((notLoaded/imgs.length)*100) + "%");
 		}
 	}, 1000);
 }
