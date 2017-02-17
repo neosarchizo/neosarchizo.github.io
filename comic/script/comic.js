@@ -10,20 +10,20 @@ Comic.prototype.getTitle = function(){
 };
 
 Comic.prototype.getProductId = function(){
-	return this.productId;	
+	return this.productId;
 };
 
 Comic.prototype.getOriginalProductId = function(){
-	return this.origianlProductId;	
+	return this.origianlProductId;
 };
 
 Comic.prototype.getVolumes = function(){
-	return this.volumes;	
+	return this.volumes;
 };
 
 function Volume(no, pageCount){
 	this.no = no;
-	this.pageCount = pageCount;	
+	this.pageCount = pageCount;
 };
 
 Volume.prototype.getNo = function(){
@@ -34,7 +34,7 @@ Volume.prototype.getPageCount = function(){
 	return this.pageCount;
 };
 
-var totalPage=0, opid=0, vno=0;
+var totalPage=0, opid=0, vno=0, amove=false;
 
 var query = location.href.split('?');
 if(query.length > 1){
@@ -47,6 +47,8 @@ if(query.length > 1){
 			opid = param[1] * 1;
 		}else if(param[0] == 'vno'){
 			vno = param[1] * 1;
+		}else if(param[0] == 'amove'){
+			amove = (param[1] == 'true');
 		}
 	}
 }
@@ -93,7 +95,7 @@ function loadVolumes(comic, page){
 
 	$.getJSON( "http://neosarchizo.cafe24.com/comic/json/", {"productNo": comic.getProductId(), "page" : page}, function( json ) {
 		var resultData = json.resultData;
-	    
+
 	    if(resultData.length == 0)
 	    	return;
 
@@ -120,8 +122,10 @@ function loadImages(){
 				var comic = getComic(opid);
 
 				if(comic.volumes.length > vno){
-					if (confirm("Move to next?")) 
-						changeVolume(opid,++vno);
+					if(amove)
+						changeVolume(opid,++vno,amove);
+					else if (confirm("Move to next?"))
+						changeVolume(opid,++vno,amove);
 				}
 			}
 		});
@@ -130,7 +134,7 @@ function loadImages(){
 	for(var i=0;i<totalPage;i++){
 		document.body.innerHTML += '<img src="ncomicpic://image?index=' + (i+1) + '">';
 	}
-	
+
 	waitAllImgsLoaded(true);
 }
 
@@ -140,7 +144,7 @@ function waitAllImgsLoaded(print){
 	console.log('"waitAllImgsLoaded" start!');
 
 	var intervalId = setInterval(function()
-	{ 
+	{
 		var imgs = document.querySelectorAll('img');
 
 		var notLoaded = 0;
@@ -173,7 +177,7 @@ function scrollToEnd(){
 	window.scrollTo(0, document.body.scrollHeight);
 }
 
-function changeVolume(origianlProductId, volumeNo){
+function changeVolume(origianlProductId, volumeNo, autoMove){
 
 	var comic = getComic(origianlProductId);
 
@@ -185,11 +189,11 @@ function changeVolume(origianlProductId, volumeNo){
 	var volume = comic.volumes[volumeNo-1];
 
 	app.changeVolume(origianlProductId,volume.getNo());
-	go(volume.getPageCount(), origianlProductId, volumeNo);
+	go(volume.getPageCount(), origianlProductId, volumeNo, autoMove);
 }
 
-function go(totalPage, origianlProductId, volumeNo){
-	location = 'http://neosarchizo.github.io/comic?totalPage=' + totalPage + '&opid=' + origianlProductId + '&vno=' + volumeNo;
+function go(totalPage, origianlProductId, volumeNo, autoMove){
+	location = 'http://neosarchizo.github.io/comic?totalPage=' + totalPage + '&opid=' + origianlProductId + '&vno=' + volumeNo + '&amove=' + autoMove;
 }
 
 function availableList(){
