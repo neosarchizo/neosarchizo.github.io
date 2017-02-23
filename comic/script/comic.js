@@ -93,7 +93,7 @@ function getComic(origianlProductId){
 
 function loadVolumes(comic, page){
 
-	$.getJSON( "http://neosarchizo.cafe24.com/comic/json/", {"productNo": comic.getProductId(), "page" : page}, function( json ) {
+	$.getJSON( 'comic/json/' + comic.getProductId() + '-' + page + '.json'}, function( json ) {
 		var resultData = json.resultData;
 
 	    if(resultData.length == 0)
