@@ -93,7 +93,7 @@ function getComic(origianlProductId){
 
 function loadVolumes(comic, page){
 
-	$.getJSON( 'comic/json/' + comic.getProductId() + '-' + page + '.json', function( json ) {
+	$.getJSON( 'json/' + comic.getProductId() + '-' + page + '.json', function( json ) {
 		var resultData = json.resultData;
 
 	    if(resultData.length == 0)
