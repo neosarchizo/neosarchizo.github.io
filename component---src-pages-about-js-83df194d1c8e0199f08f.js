@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{uHZY:function(e,t,n){"use strict";n.r(t),n.d(t,"default",(function(){return c}));var a=n("q1tI"),u=n.n(a);function c(){return u.a.createElement("div",{style:{color:"teal"}},u.a.createElement("h1",null,"About Gatsby"),u.a.createElement("p",null,"Such wow. Very React."))}}}]);
+//# sourceMappingURL=component---src-pages-about-js-83df194d1c8e0199f08f.js.map
