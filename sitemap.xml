@@ -7,7 +7,8 @@
 <url> <loc>https://neosarchizo.github.io/posts/hello-world/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/amplify/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://neosarchizo.github.io/apps/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://neosarchizo.github.io/apps/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://neosarchizo.github.io/apps/kegel-training/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/arduino/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/books/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/esp32/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
