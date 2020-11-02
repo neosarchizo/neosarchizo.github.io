@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[새로운 시작]]></title><description><![CDATA[새로운 시작 블로그]]></description><link>https://neosarchizo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 30 Oct 2020 08:08:46 GMT</lastBuildDate><item><title><![CDATA[Homebrew]]></title><description><![CDATA[homebrew~~]]></description><link>https://neosarchizo.github.io/posts/homebrew/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/homebrew/</guid><pubDate>Tue, 15 Sep 2020 04:03:03 GMT</pubDate><content:encoded>&lt;p&gt;homebrew~~&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Imgur Test]]></title><description><![CDATA[Hello!! Alt Text]]></description><link>https://neosarchizo.github.io/posts/imgur-test/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/imgur-test/</guid><pubDate>Fri, 10 Apr 2020 09:41:00 GMT</pubDate><content:encoded>&lt;h1&gt;Hello!!&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[새로운 시작]]></title><description><![CDATA[새로운 시작 블로그]]></description><link>https://neosarchizo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 02 Nov 2020 00:38:05 GMT</lastBuildDate><item><title><![CDATA[라즈베리 파이에서 부팅시 웹페이지 띄우기]]></title><description><![CDATA[라즈베리 파이에서 부팅시 특정 웹 페이지를 띄우고 싶다면  파일을 수정하면 된다. 라즈베리 터미널에서 위 명령어를 입력하고 다음과 같이 수정한다. 위 코드 중 다음 부분은 스크린 세이버를 비활성화시키는 부분이다. 그리고 다음 부분은 0.…]]></description><link>https://neosarchizo.github.io/posts/open-webpage-on-rpi-when-booting/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/open-webpage-on-rpi-when-booting/</guid><pubDate>Mon, 02 Nov 2020 00:10:03 GMT</pubDate><content:encoded>&lt;p&gt;라즈베리 파이에서 부팅시 특정 웹 페이지를 띄우고 싶다면 &lt;code class=&quot;language-text&quot;&gt;/etc/xdg/lxsession/LXDE-pi/autostart&lt;/code&gt; 파일을 수정하면 된다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo nano /etc/xdg/lxsession/LXDE-pi/autostart&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;라즈베리 터미널에서 위 명령어를 입력하고 다음과 같이 수정한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+
+@xset s noblank
+@xset s off
+@xset -dpms
+
+@unclutter -idle 0.1
+
+/usr/bin/chromium-browser --kiosk --disable-restore-session-state https://www.google.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위 코드 중 다음 부분은 스크린 세이버를 비활성화시키는 부분이다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;@xset s noblank
+@xset s off
+@xset -dpms&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그리고 다음 부분은 0.1초 이상 마우스가 동작이 없으면 커서를 숨기는 부분이다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;@unclutter -idle 0.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;마지막으로 매개변수 관련 정보는 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;--kiosk&lt;/code&gt; : 키오스크 모드. 크롬 OS의 키오스크 모드와는 다르다.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;--disable-restore-session-state&lt;/code&gt; : ??? (API 문서에 안 보임;;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;추가로 띄우는 화면에서 번역이 표시되면 해당 웹페이지의 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt;에 다음 내용을 추가하면 된다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;meta&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;google&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;notranslate&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[AWS AppSync에서 모델 추가시 주의사항]]></title><description><![CDATA[AWS AppSync를 이용해 GraphQL 서비스를 사용하다보면 를 수정하고, 을 추가해야하는 경우가 발생한다. AWS AppSync의 경우 데이터를 가지고 있는 역할을 Resolver…]]></description><link>https://neosarchizo.github.io/posts/to-do-when-adding-appsync-model/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/to-do-when-adding-appsync-model/</guid><pubDate>Sat, 31 Oct 2020 11:54:49 GMT</pubDate><content:encoded>&lt;p&gt;AWS AppSync를 이용해 GraphQL 서비스를 사용하다보면 &lt;code class=&quot;language-text&quot;&gt;Schema&lt;/code&gt;를 수정하고, &lt;code class=&quot;language-text&quot;&gt;Model&lt;/code&gt;을 추가해야하는 경우가 발생한다. AWS AppSync의 경우 데이터를 가지고 있는 역할을 Resolver가 하는데, 필자의 경우 처음 생성되는 &lt;code class=&quot;language-text&quot;&gt;Resolver&lt;/code&gt;만으로 사용하는 것이 아니라, 서비스에 맞게 많은 부분을 수정해 사용한다. 따라서 처음 AWS AppSync를 사용할때 &lt;code class=&quot;language-text&quot;&gt;Schema&lt;/code&gt;를 수정하거나 Model을 추가하는 경우 혹시라도 기존 &lt;code class=&quot;language-text&quot;&gt;Resolver&lt;/code&gt;들을 처음 상태로 만들어 버릴까 걱정한 적이 있다. 다행히 수정 작업을 한다고 &lt;code class=&quot;language-text&quot;&gt;Resolver&lt;/code&gt;에 영향을 주지는 않는다. 필자는 AWS AppSync에서 모델을 추가할때 다음과 같은 작업을 진행한다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;추가한 모델과 관련한 &lt;code class=&quot;language-text&quot;&gt;input&lt;/code&gt; 수정&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create&lt;/li&gt;
+&lt;li&gt;Update&lt;/li&gt;
+&lt;li&gt;Delete&lt;/li&gt;
+&lt;li&gt;모델을 추가하면 기본적인 형태로 &lt;code class=&quot;language-text&quot;&gt;input&lt;/code&gt;이 생성된다. 이 경우 불필요한 속성들이 있을 수 있음으로 수정한다.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;추가된 모델 관련 &lt;code class=&quot;language-text&quot;&gt;Resolver&lt;/code&gt; 수정&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;추가된 모델 중 상위, 하위 모델을 참조한 것에 대한 &lt;code class=&quot;language-text&quot;&gt;Resolver&lt;/code&gt; 수정&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;관련 &lt;code class=&quot;language-text&quot;&gt;Mutation&lt;/code&gt; 수정&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create&lt;/li&gt;
+&lt;li&gt;Update&lt;/li&gt;
+&lt;li&gt;Delete&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Homebrew]]></title><description><![CDATA[homebrew~~]]></description><link>https://neosarchizo.github.io/posts/homebrew/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/homebrew/</guid><pubDate>Tue, 15 Sep 2020 04:03:03 GMT</pubDate><content:encoded>&lt;p&gt;homebrew~~&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Imgur Test]]></title><description><![CDATA[Hello!! Alt Text]]></description><link>https://neosarchizo.github.io/posts/imgur-test/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/imgur-test/</guid><pubDate>Fri, 10 Apr 2020 09:41:00 GMT</pubDate><content:encoded>&lt;h1&gt;Hello!!&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/8qtgGyZr.jpg&quot; alt=&quot;Alt Text&quot;&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[새로운 시작....]]></title><description><![CDATA[동해물과 백두산이 마르고 닳도록 하나님이 보우하사 우리나라 만세. 무궁화 삼천리 화려강산. 대한사람 대한으로 길이 보전하세. Far far away, behind the word mountains, far from the countries…]]></description><link>https://neosarchizo.github.io/posts/new-beginnings/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/new-beginnings/</guid><pubDate>Thu, 28 May 2015 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;동해물과 백두산이 마르고 닳도록 하나님이 보우하사 우리나라 만세. 무궁화 삼천리 화려강산. 대한사람 대한으로 길이 보전하세.&lt;/p&gt;
 &lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and
 Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
