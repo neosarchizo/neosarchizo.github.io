@@ -65,7 +65,7 @@ data-styled.g21[id="styles__Footer-uky44j-6"]{content:"jNcMlt,"}
 
 @unclutter -idle 0.1
 
-/usr/bin/chromium-browser --kiosk --disable-restore-session-state https://www.google.com</code></pre></div>
+/usr/bin/chromium-browser --kiosk --noerrors --disable-session-crashed-bubble --disable-infobars https://www.google.com</code></pre></div>
 <p>위 코드 중 다음 부분은 스크린 세이버를 비활성화시키는 부분이다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">@xset s noblank
 @xset s off
@@ -74,10 +74,12 @@ data-styled.g21[id="styles__Footer-uky44j-6"]{content:"jNcMlt,"}
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">@unclutter -idle 0.1</code></pre></div>
 <p>위 명령이 동작하게 하려면 아래와 같이 <code class="language-text">unclutter</code>를 설치해줘야 한다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> unclutter</code></pre></div>
-<p>마지막으로 매개변수 관련 정보는 다음과 같다.</p>
+<p>마지막으로 매개변수 관련 정보는 다음과 같다. <code class="language-text">--noerrors</code>부터는 API 관련 설명을 못 찾았다. 그런데 Chromium이 비정상적으로 종료됐다가 다시 켜졌을때 복구하겠냐고 창이 뜨는 경우가 있는데, 이와 같은 창이 표시되지 않기 위해 <code class="language-text">--noerrors</code>부터의 매개변수를 붙여주는 것이다.</p>
 <ul>
 <li><code class="language-text">--kiosk</code> : 키오스크 모드. 크롬 OS의 키오스크 모드와는 다르다.</li>
-<li><code class="language-text">--disable-restore-session-state</code> : ??? (API 문서에 안 보임;;)</li>
+<li><code class="language-text">--noerrors</code> : ??? (API 문서에 안 보임;;)</li>
+<li><code class="language-text">--disable-session-crashed-bubble</code> : ??? (API 문서에 안 보임;;)</li>
+<li><code class="language-text">--disable-infobars</code> : ??? (API 문서에 안 보임;;)</li>
 </ul>
 <p>추가로 띄우는 화면에서 번역이 표시되면 해당 웹페이지의 <code class="language-text">&lt;head&gt;</code>에 다음 내용을 추가하면 된다.</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>google<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>notranslate<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre></div></section><hr class="styles__HR-uky44j-1 gqUPCN"/><footer class="styles__Footer-uky44j-6 jNcMlt"><div id="disqus_thread"></div></footer></article></div><footer class="footer__MyFooter-r1v3ck-0 ihaVjq"><div class="MuiContainer-root MuiContainer-maxWidthLg"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter">Copyright © <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit" href="/">neosarchizo</a> <!-- -->2020<!-- -->.</p></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-77014063-2"></script><script>
