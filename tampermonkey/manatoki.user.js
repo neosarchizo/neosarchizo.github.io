@@ -6,7 +6,7 @@
 // @version      0.4
 // @description  try to take over the world!
 // @author       You
-// @match        https://manatoki83.net/comic/*
+// @match        https://manatoki84.net/comic/*
 // @grant        none
 // @require      https://code.jquery.com/jquery-3.5.1.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js
