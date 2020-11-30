@@ -3,10 +3,10 @@
 // @namespace    https://neosarchizo.github.io
 // @downloadURL     https://neosarchizo.github.io/tampermonkey/manatoki.user.js
 // @updateURL       https://neosarchizo.github.io/tampermonkey/manatoki.user.js
-// @version      0.5
+// @version      0.6
 // @description  try to take over the world!
 // @author       You
-// @match        https://manatoki84.net/comic/*
+// @match        https://manatoki85.net/comic/*
 // @grant        none
 // @require      https://code.jquery.com/jquery-3.5.1.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js

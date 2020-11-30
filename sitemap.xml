@@ -11,6 +11,8 @@
 <url> <loc>https://neosarchizo.github.io/posts/hello-world/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/apps/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://neosarchizo.github.io/apps/eye-training/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://neosarchizo.github.io/apps/eye-training/se/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/apps/kegel-training/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/arduino/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://neosarchizo.github.io/aws/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
