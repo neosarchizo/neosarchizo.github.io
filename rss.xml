@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[새로운 시작]]></title><description><![CDATA[새로운 시작 블로그]]></description><link>https://neosarchizo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 10 Feb 2021 05:04:57 GMT</lastBuildDate><item><title><![CDATA[Segger Embedded Studio 라이센스 등록하기]]></title><description><![CDATA[를 사용할때 다음과 같은 방법으로 라이센스를 등록할 수 있다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[새로운 시작]]></title><description><![CDATA[새로운 시작 블로그]]></description><link>https://neosarchizo.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 10 Feb 2021 05:08:02 GMT</lastBuildDate><item><title><![CDATA[라즈베리 파이 4를 5 GHz AP 모드로 설정하기]]></title><description><![CDATA[라즈베리 파이 4의 WiFi의 경우 2.4 GHz와 5 GHz 모두 동작이 가능하다. 따라서 라즈베리 파이 4를 5 GHz AP 모드로 설정이 가능하다. 우선 라즈베리 파이 터미널에서 다음과 같이 입력한다.  : AP…]]></description><link>https://neosarchizo.github.io/posts/rpi-5-ghz-ap/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/rpi-5-ghz-ap/</guid><pubDate>Wed, 10 Feb 2021 05:06:10 GMT</pubDate><content:encoded>&lt;p&gt;라즈베리 파이 4의 WiFi의 경우 2.4 GHz와 5 GHz 모두 동작이 가능하다. 따라서 &lt;a href=&quot;https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md&quot;&gt;라즈베리 파이 4를 5 GHz AP 모드로 설정&lt;/a&gt;이 가능하다. 우선 라즈베리 파이 터미널에서 다음과 같이 입력한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -y hostapd dnsmasq
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;DEBIAN_FRONTEND&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;noninteractive &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -y netfilter-persistent iptables-persistent&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;hostapd&lt;/code&gt; : AP모드로 설정해주는 패키지&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;dnsmasq&lt;/code&gt; : DNS, DHCP를 관리해주는 패키지&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;netfilter-persistent&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;iptables-persistent&lt;/code&gt; : 방화벽 관련 패키지들&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;패키지들을 설치했다면 고정 IP를 설정할 차례다. 여기서는 AP 역할을 하는 라즈베리 파이의 IP를 &lt;code class=&quot;language-text&quot;&gt;192.168.4.1&lt;/code&gt;로 설정할거다. 다음과 같이 입력해서 에디터를 연다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nano&lt;/span&gt; /etc/dhcpcd.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;에디터가 열리면 파일 맨 밑에 아래 내용을 추가한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;interface wlan0
+    static ip_address=192.168.4.1/24
+    nohook wpa_supplicant&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;라즈베리 파이에 유선으로 인터넷을 연결한 뒤 AP에 연결되는 클라이언트들이 유선 네트워크를 사용하도록 할 수 있다. 하지만 필자는 그 부분은 필요없기 떄문에 넘어간다. 필요한 사람은 라즈베리 파이 홈페이지 원문을 참고(&lt;a href=&quot;https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md&quot;&gt;Enable routing and IP masquerading&lt;/a&gt;)바란다.&lt;/p&gt;
+&lt;p&gt;다음은 DHCP와 DNS 관련 설정을 할 차례다. 다음을 입력해 기존 설정을 백업하고, 에디터를 연다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mv&lt;/span&gt; /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nano&lt;/span&gt; /etc/dnsmasq.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;에디터가 열리면 파일에 다음과 같이 입력하고 저장한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;interface=wlan0 # Listening interface
+dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
+                # Pool of IP addresses served via DHCP
+domain=wlan     # Local wireless DNS domain
+address=/gw.wlan/192.168.4.1
+                # Alias for this router&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위와 같이 설정하면 클라이언트의 IP 주소를 &lt;code class=&quot;language-text&quot;&gt;192.168.4.2 ~ 192.168.4.20&lt;/code&gt; 안에서 24시간 동안 사용할 수 있도록 설정한다. 그리고 동일한 네트워크 안에서 &lt;code class=&quot;language-text&quot;&gt;gw.wlan&lt;/code&gt;을 이용해 라즈베리 파이에 연결이 가능하다. &lt;/p&gt;
+&lt;p&gt;라즈베리 파이의 WiFi의 경우 &lt;code class=&quot;language-text&quot;&gt;WiFi country code&lt;/code&gt;에 따라 동작이 됐다 안 됐다 하는 경우가 있다. 필자는 이걸 &lt;code class=&quot;language-text&quot;&gt;AD&lt;/code&gt;로 설정해서 사용한다.&lt;/p&gt;
+&lt;p&gt;다음으로 &lt;code class=&quot;language-text&quot;&gt;hostapd&lt;/code&gt; 관련 설정을 할 차례다. 다음과 같이 입력해 에디터를 연다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nano&lt;/span&gt; /etc/hostapd/hostapd.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;에디터가 열리면 다음과 같이 입력한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;country_code=AD
+interface=wlan0
+ssid=neosarchizo-rpi
+hw_mode=a
+channel=36
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=AbCd1234
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;필자의 경우 &lt;code class=&quot;language-text&quot;&gt;WiFi country code&lt;/code&gt;를 &lt;code class=&quot;language-text&quot;&gt;AD&lt;/code&gt;로 설정한다고 했는데, 이에 맞춰 &lt;code class=&quot;language-text&quot;&gt;country_code=AD&lt;/code&gt;와 같이 입력한다. 그리고 5 GHz의 경우 &lt;code class=&quot;language-text&quot;&gt;hw_mode=a&lt;/code&gt;와 같이 입력한다. &lt;code class=&quot;language-text&quot;&gt;hw_mode&lt;/code&gt;는 다음과 같이 설정이 가능하다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a = IEEE 802.11a (5 GHz) (라즈베리 파이 3 B+ 이상)&lt;/li&gt;
+&lt;li&gt;b = IEEE 802.11b (2.4 GHz)&lt;/li&gt;
+&lt;li&gt;g = IEEE 802.11g (2.4 GHz)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 &lt;code class=&quot;language-text&quot;&gt;hw_mode&lt;/code&gt;를 수정하는 경우 그에 맞춰 &lt;code class=&quot;language-text&quot;&gt;channel&lt;/code&gt;도 바꿔줘야된다. 여기서는 5 GHz 기준으로 모든 국가에서 호환되는 &lt;code class=&quot;language-text&quot;&gt;channel=36&lt;/code&gt;을 설정했다. 이와 관련해서는 &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_WLAN_channels#5_GHz_or_5.9_GHz_(802.11a/h/j/n/ac/ax)&quot;&gt;위키피디아&lt;/a&gt;를 참고하길 바란다.&lt;/p&gt;
+&lt;p&gt;모두 입력했다면 터미널에서 다음을 실행한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl &lt;span class=&quot;token function&quot;&gt;reboot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;라즈베리 파이가 리붓하고 주위 WiFi를 검색했을때 &lt;code class=&quot;language-text&quot;&gt;neosarchizo-rpi&lt;/code&gt;가 뜨는 것을 볼 수 있을 것이다. 그리고 비밀번호로 &lt;code class=&quot;language-text&quot;&gt;AbCd1234&lt;/code&gt;를 입력하면 접속이 된다. 설정을 바꾸고 싶다면, &lt;code class=&quot;language-text&quot;&gt;/etc/hostapd/hostapd.conf&lt;/code&gt;의 설정을 바꾸길 바란다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Segger Embedded Studio 라이센스 등록하기]]></title><description><![CDATA[를 사용할때 다음과 같은 방법으로 라이센스를 등록할 수 있다.
 우선 Segger 홈페이지에서 라이센스를 생성할 수 있다.  각 항목에 맞는 값을 입력한다. MAC 주소의 경우 에서 Tools - License Manager…]]></description><link>https://neosarchizo.github.io/posts/regist-ses-license/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/regist-ses-license/</guid><pubDate>Sun, 31 Jan 2021 11:15:57 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Segger Embedded Studio&lt;/code&gt;를 사용할때 다음과 같은 방법으로 라이센스를 등록할 수 있다.
 우선 &lt;a href=&quot;https://license.segger.com/Nordic.cgi&quot;&gt;Segger 홈페이지&lt;/a&gt;에서 라이센스를 생성할 수 있다.&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -85,59 +137,7 @@
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;interface eth0
 static ip_address=192.168.0.10/24
 static routers=192.168.0.1
-static domain_name_servers=192.168.0.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[라즈베리 파이 4를 5 GHz AP 모드로 설정하기]]></title><description><![CDATA[라즈베리 파이 4의 WiFi의 경우 2.4 GHz와 5 GHz 모두 동작이 가능하다. 따라서 라즈베리 파이 4를 5 GHz AP 모드로 설정이 가능하다. 우선 라즈베리 파이 터미널에서 다음과 같이 입력한다.  : AP…]]></description><link>https://neosarchizo.github.io/posts/rpi-5-ghz-ap/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/rpi-5-ghz-ap/</guid><pubDate>Fri, 15 Jan 2021 09:49:28 GMT</pubDate><content:encoded>&lt;p&gt;라즈베리 파이 4의 WiFi의 경우 2.4 GHz와 5 GHz 모두 동작이 가능하다. 따라서 &lt;a href=&quot;https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md&quot;&gt;라즈베리 파이 4를 5 GHz AP 모드로 설정&lt;/a&gt;이 가능하다. 우선 라즈베리 파이 터미널에서 다음과 같이 입력한다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -y hostapd dnsmasq
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;DEBIAN_FRONTEND&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;noninteractive &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -y netfilter-persistent iptables-persistent&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;hostapd&lt;/code&gt; : AP모드로 설정해주는 패키지&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;dnsmasq&lt;/code&gt; : DNS, DHCP를 관리해주는 패키지&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;netfilter-persistent&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;iptables-persistent&lt;/code&gt; : 방화벽 관련 패키지들&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;패키지들을 설치했다면 고정 IP를 설정할 차례다. 여기서는 AP 역할을 하는 라즈베리 파이의 IP를 &lt;code class=&quot;language-text&quot;&gt;192.168.4.1&lt;/code&gt;로 설정할거다. 다음과 같이 입력해서 에디터를 연다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nano&lt;/span&gt; /etc/dhcpcd.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;에디터가 열리면 파일 맨 밑에 아래 내용을 추가한다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;interface wlan0
-    static ip_address=192.168.4.1/24
-    nohook wpa_supplicant&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;라즈베리 파이에 유선으로 인터넷을 연결한 뒤 AP에 연결되는 클라이언트들이 유선 네트워크를 사용하도록 할 수 있다. 하지만 필자는 그 부분은 필요없기 떄문에 넘어간다. 필요한 사람은 라즈베리 파이 홈페이지 원문을 참고(&lt;a href=&quot;https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md&quot;&gt;Enable routing and IP masquerading&lt;/a&gt;)바란다.&lt;/p&gt;
-&lt;p&gt;다음은 DHCP와 DNS 관련 설정을 할 차례다. 다음을 입력해 기존 설정을 백업하고, 에디터를 연다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mv&lt;/span&gt; /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nano&lt;/span&gt; /etc/dnsmasq.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;에디터가 열리면 파일에 다음과 같이 입력하고 저장한다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;interface=wlan0 # Listening interface
-dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
-                # Pool of IP addresses served via DHCP
-domain=wlan     # Local wireless DNS domain
-address=/gw.wlan/192.168.4.1
-                # Alias for this router&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;위와 같이 설정하면 클라이언트의 IP 주소를 &lt;code class=&quot;language-text&quot;&gt;192.168.4.2 ~ 192.168.4.20&lt;/code&gt; 안에서 24시간 동안 사용할 수 있도록 설정한다. 그리고 동일한 네트워크 안에서 &lt;code class=&quot;language-text&quot;&gt;gw.wlan&lt;/code&gt;을 이용해 라즈베리 파이에 연결이 가능하다. &lt;/p&gt;
-&lt;p&gt;라즈베리 파이의 WiFi의 경우 &lt;code class=&quot;language-text&quot;&gt;WiFi country code&lt;/code&gt;에 따라 동작이 됐다 안 됐다 하는 경우가 있다. 필자는 이걸 &lt;code class=&quot;language-text&quot;&gt;AD&lt;/code&gt;로 설정해서 사용한다.&lt;/p&gt;
-&lt;p&gt;다음으로 &lt;code class=&quot;language-text&quot;&gt;hostapd&lt;/code&gt; 관련 설정을 할 차례다. 다음과 같이 입력해 에디터를 연다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nano&lt;/span&gt; /etc/hostapd/hostapd.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;에디터가 열리면 다음과 같이 입력한다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;country_code=AD
-interface=wlan0
-ssid=neosarchizo-rpi
-hw_mode=a
-channel=36
-macaddr_acl=0
-auth_algs=1
-ignore_broadcast_ssid=0
-wpa=2
-wpa_passphrase=AbCd1234
-wpa_key_mgmt=WPA-PSK
-wpa_pairwise=TKIP
-rsn_pairwise=CCMP&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;필자의 경우 &lt;code class=&quot;language-text&quot;&gt;WiFi country code&lt;/code&gt;를 &lt;code class=&quot;language-text&quot;&gt;AD&lt;/code&gt;로 설정한다고 했는데, 이에 맞춰 &lt;code class=&quot;language-text&quot;&gt;country_code=AD&lt;/code&gt;와 같이 입력한다. 그리고 5 GHz의 경우 &lt;code class=&quot;language-text&quot;&gt;hw_mode=a&lt;/code&gt;와 같이 입력한다. &lt;code class=&quot;language-text&quot;&gt;hw_mode&lt;/code&gt;는 다음과 같이 설정이 가능하다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;a = IEEE 802.11a (5 GHz) (라즈베리 파이 3 B+ 이상)&lt;/li&gt;
-&lt;li&gt;b = IEEE 802.11b (2.4 GHz)&lt;/li&gt;
-&lt;li&gt;g = IEEE 802.11g (2.4 GHz)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;이 &lt;code class=&quot;language-text&quot;&gt;hw_mode&lt;/code&gt;를 수정하는 경우 그에 맞춰 &lt;code class=&quot;language-text&quot;&gt;channel&lt;/code&gt;도 바꿔줘야된다. 여기서는 5 GHz 기준으로 모든 국가에서 호환되는 &lt;code class=&quot;language-text&quot;&gt;channel=36&lt;/code&gt;을 설정했다. 이와 관련해서는 &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_WLAN_channels#5_GHz_or_5.9_GHz_(802.11a/h/j/n/ac/ax)&quot;&gt;위키피디아&lt;/a&gt;를 참고하길 바란다.&lt;/p&gt;
-&lt;p&gt;모두 입력했다면 터미널에서 다음을 실행한다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl &lt;span class=&quot;token function&quot;&gt;reboot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;라즈베리 파이가 리붓하고 주위 WiFi를 검색했을때 &lt;code class=&quot;language-text&quot;&gt;neosarchizo-rpi&lt;/code&gt;가 뜨는 것을 볼 수 있을 것이다. 그리고 비밀번호로 &lt;code class=&quot;language-text&quot;&gt;AbCd1234&lt;/code&gt;를 입력하면 접속이 된다. 설정을 바꾸고 싶다면, &lt;code class=&quot;language-text&quot;&gt;/etc/hostapd/hostapd.conf&lt;/code&gt;의 설정을 바꾸길 바란다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bitnami에 Let's Encrypt 적용하기]]></title><description><![CDATA[을 이용해 만든 의 경우 로 되어있다. 그리고 SSL…]]></description><link>https://neosarchizo.github.io/posts/adapt-letsencrypt-on-bitnami/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/adapt-letsencrypt-on-bitnami/</guid><pubDate>Mon, 04 Jan 2021 04:15:23 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;AWS Lightsail&lt;/code&gt;을 이용해 만든 &lt;code class=&quot;language-text&quot;&gt;Wordpress&lt;/code&gt;의 경우 &lt;code class=&quot;language-text&quot;&gt;Bitnami&lt;/code&gt;로 되어있다. 그리고 SSL 인증서를 설정하는 경우 거의 &lt;code class=&quot;language-text&quot;&gt;Let&amp;#39;s Encrypt&lt;/code&gt;를 이용한다. 다행히 &lt;code class=&quot;language-text&quot;&gt;Bitnami&lt;/code&gt; 쪽에서 &lt;a href=&quot;https://docs.bitnami.com/aws/how-to/generate-install-lets-encrypt-ssl/&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Let&amp;#39;s Encrypt&lt;/code&gt;를 설정하는 방법&lt;/a&gt;에 대해 자세히 설명해놓았다. 여기서 주의할 점은 설명 글에 나와있는데로 그대로 따라하되, &lt;code class=&quot;language-text&quot;&gt;Step 3: Configure The Web Server To Use The Let’s Encrypt Certificate&lt;/code&gt;에서 &lt;code class=&quot;language-text&quot;&gt;Approach B&lt;/code&gt;를 따라하면 된단거다. 그리고 꼭 &lt;code class=&quot;language-text&quot;&gt;Step 5: Renew The Let’s Encrypt Certificate&lt;/code&gt;까지 해야 주기적으로 인증서를 직접 갱신해주는 수고를 없앨 수 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Android SDK 29 버젼에서 BLE 비동작 문제]]></title><description><![CDATA[에서 의 SDK 버젼을 29로 설정하는 경우 BLE…]]></description><link>https://neosarchizo.github.io/posts/android-sdk-version-29-ble-error/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/android-sdk-version-29-ble-error/</guid><pubDate>Wed, 23 Dec 2020 04:55:34 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://github.com/Polidea/react-native-ble-plx/issues/730#issuecomment-685630842&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;React Native&lt;/code&gt;에서 &lt;code class=&quot;language-text&quot;&gt;Android&lt;/code&gt;의 SDK 버젼을 29로 설정하는 경우 BLE가 동작하지 않는 경우&lt;/a&gt;가 있다. 이 경우 대게 &lt;code class=&quot;language-text&quot;&gt;Permission&lt;/code&gt;의 이름이 바뀌어 발생하는 경우가 많다. 따라서 다음과 같이 &lt;code class=&quot;language-text&quot;&gt;Permission&lt;/code&gt; 이름을 수정해주면된다.&lt;/p&gt;
+static domain_name_servers=192.168.0.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Bitnami에 Let's Encrypt 적용하기]]></title><description><![CDATA[을 이용해 만든 의 경우 로 되어있다. 그리고 SSL…]]></description><link>https://neosarchizo.github.io/posts/adapt-letsencrypt-on-bitnami/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/adapt-letsencrypt-on-bitnami/</guid><pubDate>Mon, 04 Jan 2021 04:15:23 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;AWS Lightsail&lt;/code&gt;을 이용해 만든 &lt;code class=&quot;language-text&quot;&gt;Wordpress&lt;/code&gt;의 경우 &lt;code class=&quot;language-text&quot;&gt;Bitnami&lt;/code&gt;로 되어있다. 그리고 SSL 인증서를 설정하는 경우 거의 &lt;code class=&quot;language-text&quot;&gt;Let&amp;#39;s Encrypt&lt;/code&gt;를 이용한다. 다행히 &lt;code class=&quot;language-text&quot;&gt;Bitnami&lt;/code&gt; 쪽에서 &lt;a href=&quot;https://docs.bitnami.com/aws/how-to/generate-install-lets-encrypt-ssl/&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Let&amp;#39;s Encrypt&lt;/code&gt;를 설정하는 방법&lt;/a&gt;에 대해 자세히 설명해놓았다. 여기서 주의할 점은 설명 글에 나와있는데로 그대로 따라하되, &lt;code class=&quot;language-text&quot;&gt;Step 3: Configure The Web Server To Use The Let’s Encrypt Certificate&lt;/code&gt;에서 &lt;code class=&quot;language-text&quot;&gt;Approach B&lt;/code&gt;를 따라하면 된단거다. 그리고 꼭 &lt;code class=&quot;language-text&quot;&gt;Step 5: Renew The Let’s Encrypt Certificate&lt;/code&gt;까지 해야 주기적으로 인증서를 직접 갱신해주는 수고를 없앨 수 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Android SDK 29 버젼에서 BLE 비동작 문제]]></title><description><![CDATA[에서 의 SDK 버젼을 29로 설정하는 경우 BLE…]]></description><link>https://neosarchizo.github.io/posts/android-sdk-version-29-ble-error/</link><guid isPermaLink="false">https://neosarchizo.github.io/posts/android-sdk-version-29-ble-error/</guid><pubDate>Wed, 23 Dec 2020 04:55:34 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://github.com/Polidea/react-native-ble-plx/issues/730#issuecomment-685630842&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;React Native&lt;/code&gt;에서 &lt;code class=&quot;language-text&quot;&gt;Android&lt;/code&gt;의 SDK 버젼을 29로 설정하는 경우 BLE가 동작하지 않는 경우&lt;/a&gt;가 있다. 이 경우 대게 &lt;code class=&quot;language-text&quot;&gt;Permission&lt;/code&gt;의 이름이 바뀌어 발생하는 경우가 많다. 따라서 다음과 같이 &lt;code class=&quot;language-text&quot;&gt;Permission&lt;/code&gt; 이름을 수정해주면된다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;android/app/src/main/AndroidManifest.xml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;xml&quot;&gt;&lt;pre class=&quot;language-xml&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;...
 &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;uses-permission-sdk-23&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;&lt;span class=&quot;token namespace&quot;&gt;android:&lt;/span&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;android.permission.ACCESS_FINE_LOCATION&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;
