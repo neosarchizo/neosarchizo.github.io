@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-index-ts-647434e67be4f6b0ba6f.js","mappings":"6IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/index.ts"],"sourcesContent":["import { Main } from '../contents';\nexport default Main;\nvar pageQuery = \"3356311644\";\n"],"names":["Main"],"sourceRoot":""}

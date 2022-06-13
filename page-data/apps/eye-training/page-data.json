@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-pages-apps-eye-training-index-js","path":"/apps/eye-training/","result":{"data":{"site":{"siteMetadata":{"title":"새로운 시작"}}},"pageContext":{}}}
+{
+    "componentChunkName": "component---src-pages-apps-eye-training-index-ts",
+    "path": "/apps/eye-training/",
+    "result": {"pageContext":{}},
+    "staticQueryHashes": ["2841359383"]}
