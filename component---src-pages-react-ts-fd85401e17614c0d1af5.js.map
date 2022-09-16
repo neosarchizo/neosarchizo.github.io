@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-react-ts-fd85401e17614c0d1af5.js","mappings":"6IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/react.ts"],"sourcesContent":["import { React } from '../contents';\nexport default React;\nvar pageQuery = \"1928593218\";\n"],"names":["React"],"sourceRoot":""}

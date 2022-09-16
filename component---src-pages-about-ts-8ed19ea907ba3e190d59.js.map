@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-about-ts-8ed19ea907ba3e190d59.js","mappings":"6IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/about.ts"],"sourcesContent":["import { About } from '../contents';\nexport default About;\n"],"names":["About"],"sourceRoot":""}

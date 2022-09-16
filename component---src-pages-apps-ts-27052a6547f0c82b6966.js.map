@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-apps-ts-27052a6547f0c82b6966.js","mappings":"8IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/apps.ts"],"sourcesContent":["import { Apps } from '../contents';\nexport default Apps;\n"],"names":["Apps"],"sourceRoot":""}
