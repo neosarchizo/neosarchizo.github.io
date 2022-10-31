@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-books-ts-1586158a68eabacf6088.js","mappings":"8IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/books.ts"],"sourcesContent":["import { Books } from '../contents';\nexport default Books;\n"],"names":["Books"],"sourceRoot":""}

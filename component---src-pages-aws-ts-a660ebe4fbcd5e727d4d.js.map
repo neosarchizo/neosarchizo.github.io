@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-aws-ts-a660ebe4fbcd5e727d4d.js","mappings":"8IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/aws.ts"],"sourcesContent":["import { Aws } from '../contents';\nexport default Aws;\nvar pageQuery = \"2336832717\";\n"],"names":["Aws"],"sourceRoot":""}

@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-404-ts-19815955a2137c26b6d7.js","mappings":"8IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/404.ts"],"sourcesContent":["import { P404 } from '../contents';\nexport default P404;\n"],"names":["P404"],"sourceRoot":""}
