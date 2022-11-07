@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkneosarchizo_blog=self.webpackChunkneosarchizo_blog||[]).push([[331],{6398:function(e,o,s){s.r(o);var a=s(7805);o.default=a.S9}}]);
+//# sourceMappingURL=component---src-pages-health-ts-568b4672cbf36cef53ab.js.map

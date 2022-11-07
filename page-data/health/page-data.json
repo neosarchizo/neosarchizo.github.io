@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-health-ts",
+    "path": "/health/",
+    "result": {"data":{"site":{"siteMetadata":{"author":{"summary":"S/W & H/W 엔지니어"},"social":{"github":"neosarchizo","email":"neosarchizo@gmail.com","youtube":"neosarchizo","telegram":"neosarchizo"}}},"allMdx":{"edges":[{"node":{"excerpt":"…","fields":{"slug":"/posts/human-is-herbivore/"},"frontmatter":{"date":"2022-11-03T02:49:05.465Z","title":"인간은 초식 동물이다.","coverImage":{"src":"https://cdn.pixabay.com/photo/2015/01/30/09/46/cow-617327_1280.jpg","owner":{"name":"Andrewkim","link":"https://pixabay.com/users/andrewkim-596605/"},"platform":{"name":"pixabay","link":"https://pixabay.com"}}}}}]}},"pageContext":{}},
+    "staticQueryHashes": ["2841359383"]}
