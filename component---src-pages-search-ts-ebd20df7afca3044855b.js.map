@@ -1,1 +1,0 @@
-{"version":3,"file":"component---src-pages-search-ts-ebd20df7afca3044855b.js","mappings":"8IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/search.ts"],"sourcesContent":["import { Search } from '../contents';\nexport default Search;\nvar pageQuery = \"3667468360\";\n"],"names":["Search"],"sourceRoot":""}

@@ -1,1 +1,0 @@
-{"version":3,"file":"component---src-pages-apps-eye-training-kiho-ts-1757890efcd63bc95cb0.js","mappings":"6IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/apps/eye-training/kiho.ts"],"sourcesContent":["import { Kiho } from '../../../contents';\nexport default Kiho;\n"],"names":["Kiho"],"sourceRoot":""}

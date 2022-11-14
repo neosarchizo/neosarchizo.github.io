@@ -1,1 +1,0 @@
-{"version":3,"file":"component---src-pages-apps-kegel-training-ts-d69629fa5b7b212fbdda.js","mappings":"8IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/apps/kegel-training.ts"],"sourcesContent":["import { KegelTraining } from '../../contents';\nexport default KegelTraining;\n"],"names":["KegelTraining"],"sourceRoot":""}

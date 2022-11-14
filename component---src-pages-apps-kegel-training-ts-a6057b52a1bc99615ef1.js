@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkneosarchizo_blog=self.webpackChunkneosarchizo_blog||[]).push([[352],{4778:function(e,o,s){s.r(o);var a=s(636);o.default=a.UO}}]);
-//# sourceMappingURL=component---src-pages-apps-kegel-training-ts-a6057b52a1bc99615ef1.js.map

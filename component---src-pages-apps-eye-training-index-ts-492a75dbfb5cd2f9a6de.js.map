@@ -1,1 +1,0 @@
-{"version":3,"file":"component---src-pages-apps-eye-training-index-ts-492a75dbfb5cd2f9a6de.js","mappings":"8IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/apps/eye-training/index.ts"],"sourcesContent":["import { EyeTraining } from '../../../contents';\nexport default EyeTraining;\n"],"names":["EyeTraining"],"sourceRoot":""}

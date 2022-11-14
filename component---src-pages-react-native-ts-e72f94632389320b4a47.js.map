@@ -1,1 +1,0 @@
-{"version":3,"file":"component---src-pages-react-native-ts-e72f94632389320b4a47.js","mappings":"4IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/react-native.ts"],"sourcesContent":["import { ReactNative } from '../contents';\nexport default ReactNative;\nvar pageQuery = \"310416081\";\n"],"names":["ReactNative"],"sourceRoot":""}

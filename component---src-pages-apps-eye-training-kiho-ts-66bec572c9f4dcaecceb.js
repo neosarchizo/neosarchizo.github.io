@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkneosarchizo_blog=self.webpackChunkneosarchizo_blog||[]).push([[72],{4631:function(e,o,s){s.r(o);var a=s(2764);o.default=a.ko}}]);
-//# sourceMappingURL=component---src-pages-apps-eye-training-kiho-ts-66bec572c9f4dcaecceb.js.map
