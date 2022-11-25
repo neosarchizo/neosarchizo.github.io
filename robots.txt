@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://neosarchizo.github.io/sitemap-index.xml
+Host: https://neosarchizo.github.io
