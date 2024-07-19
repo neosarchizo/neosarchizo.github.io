@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkneosarchizo_blog=self.webpackChunkneosarchizo_blog||[]).push([[756],{4377:function(e,o,s){s.r(o);var a=s(7805);o.default=a.or}}]);
-//# sourceMappingURL=component---src-pages-index-ts-96876fd656db8d413a25.js.map

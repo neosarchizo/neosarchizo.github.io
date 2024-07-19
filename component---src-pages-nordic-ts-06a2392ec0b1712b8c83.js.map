@@ -1,1 +1,0 @@
-{"version":3,"file":"component---src-pages-nordic-ts-06a2392ec0b1712b8c83.js","mappings":"8IACA,UAAeA,EAAf","sources":["webpack://neosarchizo-blog/./src/pages/nordic.ts"],"sourcesContent":["import { Nordic } from '../contents';\nexport default Nordic;\nvar pageQuery = \"3740436894\";\n"],"names":["Nordic"],"sourceRoot":""}
